@@ -20,7 +20,7 @@ actor TitleDatabase {
     @MainActor var title: String = "Starting Title"
     
     func updateTitle() {
-        Task {
+        Task { @MainActor in
             title = await database.getNewTitle()
             print(Thread.current)
         }
